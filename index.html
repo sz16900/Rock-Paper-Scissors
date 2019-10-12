@@ -11,86 +11,23 @@
 <body>
 
     <h1>Rock, Paper, Scissors Game!</h1>
-    <h4>Please, open your console and initialize the game by typing -> game()</h4>
+    <div id="container">
+        <div id="buttons">
+            <button id="rock">ROCK</button>
+            <button id="paper">PAPER</button>
+            <button id="scissors">SCISSORS</button>
+        </div>
+        <div id="board">
+            <div id="result"></div>
+            <div id="score">
+                <div id="myScore"></div>
+                <div id="compScore"></div>
+            </div>
+        </div>
+        <div id="final-result"></div>
+    </div>
 
-    <script>
-        let hand = ['rock', 'paper', 'scissors'];
-
-        function game() {
-
-            let score = 0;
-            let compScore = 0;
-
-            function playRound() {
-                let computerSelection = computerPlay();
-                let playerSelection = playerPlay();
-
-                function computerPlay() {
-                    let x = Math.floor(Math.random() * 3);
-                    return hand[x];
-                }
-
-                function playerPlay() {
-                    let pass = false;
-                    do {
-                        let x = prompt("Please choose: rock, paper, scissors").toLocaleLowerCase();
-                        if (x === 'rock' || x === 'paper' || x === 'scissors') {
-                            pass = true;
-                            return x;
-                        } else {
-                            let x = prompt("You MUST choose: rock, paper, scissors").toLocaleLowerCase();
-                        }
-                    } while (pass == false);
-                }
-
-                if (playerSelection === computerSelection) {
-                    console.log("Your score is " + score);
-                    console.log("The computer score is " + compScore);
-                    return "It's a tie";
-                }
-                if (playerSelection === 'rock') {
-                    if (computerSelection === 'scissors') {
-                        console.log("Your Score is " + (score += 1));
-                        console.log("The computer score is " + compScore);
-
-                        return 'You Win'
-                    } else {
-                        console.log("Your score is " + score);
-                        console.log("The computer score is " + (compScore += 1));
-                        return 'You Lose.'
-                    }
-                }
-                if (playerSelection === "paper") {
-                    if (computerSelection === "rock") {
-                        console.log("Your Score is " + (score += 1));
-                        console.log("The computer score is " + compScore);
-                        return "You win!";
-                    } else {
-                        console.log("Your score is " + score);
-                        console.log("The computer score is " + (compScore += 1));
-                        return "You lose";
-                    }
-                }
-                if (playerSelection === "scissors") {
-                    if (computerSelection === "rock") {
-                        console.log("Your score is " + score);
-                        console.log("The computer score is " + (compScore += 1));
-                        return "You lose! Try again.";
-                    } else {
-                        console.log("Your Score is " + (score += 1));
-                        console.log("The computer score is " + compScore);
-                        return "You win!";
-                    }
-                }
-            };
-
-            while (true) { console.log(playRound()) };
-            return score;
-        }
-
-        // console.log("Your Total score is: " + game());
-
-    </script>
+    <script src="logic.js"></script>
 </body>
 
 </html>
